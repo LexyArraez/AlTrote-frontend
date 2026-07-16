@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+@theme {
+  /* Fondo general de la app */
+  --color-cream: #FFF7ED;
+
+  /* Primary — naranja */
+  --color-primary: #FF9F1C;
+  --color-primary-light: #FFD699;
+  --color-primary-dark: #B36A00;
+
+  /* Secondary — turquesa */
+  --color-secondary: #2EC4B6;
+  --color-secondary-light: #9FE1CB;
+  --color-secondary-dark: #0F6E56;
+
+  /* Tertiary — rosa */
+  --color-tertiary: #FF5D8F;
+  --color-tertiary-light: #FBC0D1;
+  --color-tertiary-dark: #99355A;
+
+  /* Neutral — texto y bordes */
+  --color-neutral: #4A4A4A;
+  --color-neutral-light: #9A9A9A;
+  --color-neutral-lighter: #FFE3C2;
+
+  /* Tipografia: Quicksand para todo (headline, body, label) */
+  --font-sans: "Quicksand", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-neutral);
+  font-family: var(--font-sans);
+}
