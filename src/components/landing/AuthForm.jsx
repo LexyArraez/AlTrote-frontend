@@ -1,6 +1,14 @@
+import { Tabs } from './Tabs'
+import { Input } from './Input'
+import { Button } from '../common/Button'
+import { RoleCard } from './RoleCard'
+import { Checkbox } from './Checkbox'
+import { Icon } from '@iconify/react'
 
 export const AuthForm = ({ authProps }) => {
     const { tab, setTab, role, setRole, formData, handleChange, handleSubmit, loading, error } = authProps
+    const { fullName, email, password, inviteCode, acceptedTerms } = formData
+    
     return (
         <section className='flex-1 p-10 bg-white'>
 
@@ -13,8 +21,6 @@ export const AuthForm = ({ authProps }) => {
                 ]}
 
             />
-
-
             <form onSubmit={handleSubmit} className='mt-6 space-y-4'>
 
                 {tab === 'register' && (
@@ -42,19 +48,29 @@ export const AuthForm = ({ authProps }) => {
                             label="Nombre completo"
                             type="text"
                             placeholder="Tu nombre"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
+                            value={formData.fullName || ''}
+                            onChange={(e) => handleChange('fullName',e.target.value)}
                             required
                         />
                     </>
+                )}
+                {role === 'hijo' && (
+                    <Input
+                        label="Código de invitación"
+                        type="text"
+                        placeholder="Pide el código a tu padre/tutor"
+                        value={formData.inviteCode || ''}
+                        onChange={(e) => handleChange('inviteCode', e.target.value)}
+                        required
+                    />
                 )}
 
                 <Input
                     label="Correo electrónico"
                     type="email"
                     placeholder="ejemplo@correo.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={formData.email || ''}
+                    onChange={(e) => handleChange('email',e.target.value)}
                     required
                 />
 
@@ -62,8 +78,8 @@ export const AuthForm = ({ authProps }) => {
                     label="Contraseña"
                     type="password"
                     placeholder="Mínimo 8 caracteres"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={formData.password || ''}
+                    onChange={(e) => handleChange('password',e.target.value)}
                     required
                 />
 
@@ -75,7 +91,7 @@ export const AuthForm = ({ authProps }) => {
                 {tab === 'register' && (
                     <Checkbox
                         checked={acceptedTerms}
-                        onChange={(e) => setAcceptedTerms(e.target.checked)}
+                        onChange={(e) => handleChange('acceptedTerms',e.target.checked)}
                         required
                     >
                         Acepto los{' '}
@@ -115,6 +131,6 @@ export const AuthForm = ({ authProps }) => {
                 </div>
 
             </form>
-        </section>
+        </section >
     )
 }
