@@ -5,9 +5,10 @@
   --color-cream: #FFF7ED;
 
   /* Primary — naranja */
-  --color-primary: #FF9F1C;
-  --color-primary-light: #FFD699;
+  --color-primary: #895100;
+  --color-primary-light: #FF9F1C;
   --color-primary-dark: #B36A00;
+  
 
   /* Secondary — turquesa */
   --color-secondary: #2EC4B6;
@@ -19,10 +20,16 @@
   --color-tertiary-light: #FBC0D1;
   --color-tertiary-dark: #99355A;
 
+
   /* Neutral — texto y bordes */
   --color-neutral: #4A4A4A;
   --color-neutral-light: #9A9A9A;
   --color-neutral-lighter: #FFE3C2;
+  --color-neutral-dark: #FF9F1C
+
+
+
+
 
   /* Tipografia: Quicksand para todo (headline, body, label) */
   --font-sans: "Quicksand", system-ui, sans-serif;

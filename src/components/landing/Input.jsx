@@ -19,7 +19,7 @@ export const Input = ({
     return (
         <div className="w-full">
       {label && (
-        <label htmlFor={inputId} className="block text-sm mb-1 text-neutral">
+        <label htmlFor={inputId} className="block text-sm mb-1 text-primary">
           {label}
         </label>
       )}
