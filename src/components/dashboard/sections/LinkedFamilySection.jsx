@@ -51,10 +51,6 @@ export const LinkedFamilySection = ({ household, childrenStats }) => {
                     <p className="text-sm text-neutral-light">Aún no tienes hijos vinculados.</p>
                 )}
 
-                <Button variant="dashed">
-                    <Icon icon="mdi:plus" width="16" height="16" />
-                    Añadir miembro
-                </Button>
             </div>
         </section>
     )

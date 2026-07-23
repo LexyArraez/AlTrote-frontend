@@ -28,7 +28,7 @@ export const ComplianceSection = ({ childrenStats, overallCompletion }) => {
 
             {childrenStats.length > 0 && (
                 <div className="mt-4">
-                    <GoalBanner text="¡Casi llegamos!" percentage={overallCompletion} />
+                    <GoalBanner percentage={overallCompletion} />
                 </div>
             )}
         </section>
