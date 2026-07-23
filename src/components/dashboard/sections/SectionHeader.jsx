@@ -1,8 +1,8 @@
 const TITLE_COLORS = {
-  primary: 'text-primary-dark',
-  secondary: 'text-secondary-dark',
-  tertiary: 'text-tertiary',
-  neutral: 'text-neutral',
+    primary: 'text-primary-dark',
+    secondary: 'text-secondary-dark',
+    tertiary: 'text-tertiary',
+    neutral: 'text-neutral',
 }
 
 
