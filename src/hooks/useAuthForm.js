@@ -1,7 +1,9 @@
-import { useState,useCallback } from 'react'
+import { useState, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../firebase'
 import { registerUser } from '../adapters/authAdapter'
+import { getMe } from '../adapters/userAdapter'
 
 function traducirError(err) {
   const mapa = {
@@ -17,6 +19,8 @@ function traducirError(err) {
 }
 
 export function useAuthForm() {
+  const navigate = useNavigate()
+
   const [tab, setTabState] = useState('login')
   const [role, setRole] = useState('padre')
   const [formData, setFormData] = useState({
@@ -28,7 +32,6 @@ export function useAuthForm() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
 
   const setTab = (newTab) => {
     setError('')
@@ -49,7 +52,11 @@ export function useAuthForm() {
 
     try {
       if (tab === 'login') {
-        await signInWithEmailAndPassword(auth, formData.email, formData.password)
+        const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password)
+        const idToken = await userCredential.user.getIdToken()
+        const profile = await getMe(idToken)
+
+        navigate(profile.role === 'padre' ? '/dashboard-padre' : '/dashboard-hijo')
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password)
         const idToken = await userCredential.user.getIdToken()
@@ -59,6 +66,8 @@ export function useAuthForm() {
           role,
           invite_code: role === 'hijo' ? formData.inviteCode : undefined,
         })
+
+        navigate(role === 'padre' ? '/dashboard-padre' : '/dashboard-hijo')
       }
     } catch (err) {
       setError(traducirError(err))
@@ -67,15 +76,15 @@ export function useAuthForm() {
     }
   }
 
-  return { 
-    tab, 
-    setTab, 
-    role, 
-    setRole, 
-    formData, 
-    handleChange, 
-    handleSubmit, 
-    loading, 
-    error 
+  return {
+    tab,
+    setTab,
+    role,
+    setRole,
+    formData,
+    handleChange,
+    handleSubmit,
+    loading,
+    error,
   }
 }
