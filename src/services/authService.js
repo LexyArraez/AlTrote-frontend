@@ -9,7 +9,6 @@ export async function fetchUserProfile(fbUser) {
     const idToken = await fbUser.getIdToken()
     return await getMe(idToken)
   } catch (err) {
-    console.error('Error al obtener el perfil de usuario:', err)
     return null
   }
 }

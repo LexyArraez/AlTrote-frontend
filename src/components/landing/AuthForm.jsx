@@ -8,7 +8,7 @@ import { Icon } from '@iconify/react'
 export const AuthForm = ({ authProps }) => {
     const { tab, setTab, role, setRole, formData, handleChange, handleSubmit, loading, error } = authProps
     const { fullName, email, password, inviteCode, acceptedTerms } = formData
-    
+
     return (
         <section className='flex-1 p-10 bg-white'>
 
@@ -49,7 +49,7 @@ export const AuthForm = ({ authProps }) => {
                             type="text"
                             placeholder="Tu nombre"
                             value={formData.fullName || ''}
-                            onChange={(e) => handleChange('fullName',e.target.value)}
+                            onChange={(e) => handleChange('fullName', e.target.value)}
                             required
                         />
                     </>
@@ -70,7 +70,7 @@ export const AuthForm = ({ authProps }) => {
                     type="email"
                     placeholder="ejemplo@correo.com"
                     value={formData.email || ''}
-                    onChange={(e) => handleChange('email',e.target.value)}
+                    onChange={(e) => handleChange('email', e.target.value)}
                     required
                 />
 
@@ -79,7 +79,7 @@ export const AuthForm = ({ authProps }) => {
                     type="password"
                     placeholder="Mínimo 8 caracteres"
                     value={formData.password || ''}
-                    onChange={(e) => handleChange('password',e.target.value)}
+                    onChange={(e) => handleChange('password', e.target.value)}
                     required
                 />
 
@@ -91,7 +91,7 @@ export const AuthForm = ({ authProps }) => {
                 {tab === 'register' && (
                     <Checkbox
                         checked={acceptedTerms}
-                        onChange={(e) => handleChange('acceptedTerms',e.target.checked)}
+                        onChange={(e) => handleChange('acceptedTerms', e.target.checked)}
                         required
                     >
                         Acepto los{' '}
@@ -102,8 +102,13 @@ export const AuthForm = ({ authProps }) => {
                     </Checkbox>
                 )}
 
-                <Button type="submit" variant={tab === 'login' ? 'primary' : 'primary'}>
-                    {tab === 'login' ? 'Entrar' : 'Registrarme ahora'}
+                {error && (
+                    <p role="alert" className="text-sm text-tertiary-dark bg-tertiary/10 rounded-lg px-3 py-2">
+                        {error}
+                    </p>
+                )}
+                <Button type="submit" variant="primary" disabled={loading}>
+                    {loading ? 'Cargando...' : tab === 'login' ? 'Entrar' : 'Registrarme ahora'}
                 </Button>
 
 
