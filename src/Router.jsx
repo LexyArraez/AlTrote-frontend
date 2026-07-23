@@ -1,18 +1,21 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import {UnderConstruction} from "./components/common/UnderConstruction";
-import {LandingPage} from "./pages/LandingPage";
+import { AuthProvider } from "../src/hooks/context/AuthProvider"
+import { UnderConstruction } from "./components/common/UnderConstruction";
+import { LandingPage } from "./pages/LandingPage";
+import { ParentDashboard } from "./pages/ParentDashboard";
 
 
 export const Router = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<LandingPage/>} />
-                <Route element={<UnderConstruction name="dashboard" />}>
-                    <Route path="/dashboard-padre" element={<UnderConstruction name="dashboard-padre" />} />  
-                    <Route path="/dashboard-hijo" element={<UnderConstruction name="dashboard-hijo" />} />    
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                   
+                        <Route path="/dashboard-padre" element={<ParentDashboard />} />
+                        <Route path="/dashboard-hijo" element={<UnderConstruction name="dashboard-hijo" />} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
     )
 }
