@@ -18,6 +18,9 @@ const variants = {
   role: 'rounded-xl flex-1 flex flex-col items-center gap-2 py-4 border-2 border-neutral-lighter bg-white hover:border-primary/50',
   ghost: 'w-auto rounded-lg bg-transparent hover:bg-cream text-primary text-md flex items-center gap-1.5 py-2 px-3',
   fab: 'w-14 h-14 !p-0 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center shadow-lg',
+  dashed: 'w-full flex items-center justify-center gap-1.5 border-2 border-dashed border-neutral-lighter bg-transparent text-neutral-light text-sm hover:border-primary/50 hover:text-primary',
+  icon: 'shrink-0 w-9 h-9 !p-0 rounded-lg flex items-center justify-center bg-transparent text-neutral-light',
+    'icon-plain': '!p-0 bg-transparent text-neutral-light',
 }
   return (
     <button
